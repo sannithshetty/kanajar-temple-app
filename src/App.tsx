@@ -1,14 +1,15 @@
 // src/App.tsx
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { ThemeProvider, createTheme, CssBaseline, AppBar, Toolbar, Button, IconButton } from '@mui/material';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import Home from './components/Home/Home';
 import Brahmalingeshwara from './components/Brahmalingeshwara/Brahmalingeshwara';
 import MelbantaDeva from './components/MelbantaDeva/MelbantaDeva';
 import PoojaForm from './components/Pooja/PoojaForm';
 import Gallery from './components/Gallery/Gallery';
 import ContactUs from './components/ContactUs/ContactUs';
-import { Brightness4, Brightness7, Language } from '@mui/icons-material'; // Import MUI icons
+import ToolbarComponent from './components/Toolbar/Toolbar';
+import Footer from './components/Footer/Footer'; // Import the Footer
 import { useTranslation } from 'react-i18next';
 import './App.scss'; // SCSS for global styles
 
@@ -43,35 +44,32 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <AppBar position="static">
-          <Toolbar>
-            <Button color="inherit" component={Link} to="/">Home</Button>
-            <Button color="inherit" component={Link} to="/brahmalingeshwara">Brahmalingeshwara</Button>
-            <Button color="inherit" component={Link} to="/melbantadeva">Melbanta Deva</Button>
-            <Button color="inherit" component={Link} to="/pooja">Shashwatha Pooje</Button>
-            <Button color="inherit" component={Link} to="/gallery">Gallery</Button>
-            <Button color="inherit" component={Link} to="/contactus">Contact Us</Button>
-
-            {/* Theme toggle button */}
-            <IconButton color="inherit" onClick={() => setDarkMode(!darkMode)} sx={{ ml: 'auto' }}>
-              {darkMode ? <Brightness7 /> : <Brightness4 />}
-            </IconButton>
-
-            {/* Language toggle button */}
-            <IconButton color="inherit" onClick={() => changeLanguage(language === 'en' ? 'kn' : 'en')}>
-              <Language />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/brahmalingeshwara" element={<Brahmalingeshwara />} />
-          <Route path="/melbantadeva" element={<MelbantaDeva />} />
-          <Route path="/pooja" element={<PoojaForm />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contactus" element={<ContactUs />} />
-        </Routes>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <ToolbarComponent
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+            language={language}
+            changeLanguage={changeLanguage}
+          />
+          
+          <main> {/* Use the styles defined in App.scss */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/brahmalingeshwara" element={<Brahmalingeshwara />} />
+              <Route path="/melbantadeva" element={<MelbantaDeva />} />
+              <Route path="/pooja" element={<PoojaForm />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/contactus" element={<ContactUs />} />
+            </Routes>
+          </main>
+          
+          <Footer
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+            language={language}
+            changeLanguage={changeLanguage}
+          />
+        </div>
       </Router>
     </ThemeProvider>
   );

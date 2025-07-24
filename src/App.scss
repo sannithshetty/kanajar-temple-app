@@ -15,7 +15,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +34,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Ensure the main content area takes up remaining space */
+main {
+  padding-top: 64px; /* Adjust this to match the height of your toolbar */
+  padding-bottom: 64px; /* Adjust this to match the height of your footer */
+  flex: 1; /* Ensure the main section grows to fill available space */
+  display: flex; /* This allows flex properties for child elements */
+  justify-content: center; /* Center the main content */
+  align-items: center; /* Center the main content vertically */
+  background-image: url('../src//assets/images/KANAJAR\ LONG\ SHOT\ 2.jpg'); // Set your background image
+  background-size: cover; // Ensure the background covers the entire area
+  background-position: right; // Center the background image
+  background-repeat: no-repeat; // Prevent the background from repeating
 }

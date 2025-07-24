@@ -1,0 +1,16 @@
+.Footer {
+    position: fixed; /* Keep footer at the bottom */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px; /* Set the footer height */
+    background-color: #282c34; /* Match the color with the toolbar */
+    z-index: 1000; /* Ensure it is above other content */
+  
+    .footer-toolbar {
+      display: flex;
+      justify-content: flex-end; /* Align items to the right */
+      padding: 8px; /* Add some padding */
+    }
+  }
+  

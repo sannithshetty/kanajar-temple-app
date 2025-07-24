@@ -1,0 +1,24 @@
+// src/components/Toolbar/Toolbar.scss
+
+.Toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px; // Add padding for toolbar
+  
+    .toolbar-buttons {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-start;
+      gap: 15px;
+  
+      @media (max-width: 600px) {
+        display: none; // Hide on small screens
+      }
+    }
+  
+    .toolbar-actions {
+      display: flex;
+      align-items: center; // Align icons to the center
+    }
+  }
+  
